@@ -13,6 +13,7 @@ export const VISUAL_ELEMENT_TYPES_CONST = [
 ] as const;
 
 type VisualElementType = typeof VISUAL_ELEMENT_TYPES_CONST[number];
+
 export interface Layout {
     id: string;           // 组件ID，对应JSON中的标识
     type: VisualElementType;         // 组件类型，如"table", "line-chart"

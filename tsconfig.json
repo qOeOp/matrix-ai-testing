@@ -8,11 +8,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "target": "ES2017",
+    "target": "ES2020",
     "resolveJsonModule": true,
     "rootDir": "./",
     "skipLibCheck": true,

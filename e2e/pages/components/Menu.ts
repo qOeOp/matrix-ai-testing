@@ -15,13 +15,14 @@ type Tab =
     | '债市复盘'
     | '固收综合屏'
     | '资金综合屏';
-export class Menu{
+
+export class Menu {
     constructor(private agent: PageAgent) {
     };
 
-    public async navigate(tab :Tab){
+    public async navigate(tab: Tab) {
         await this.agent.aiTap(`${tab} 标签`, {xpath: `//div[@id='dm-matrix-header-global']//div[contains(@text,'${tab}')]`});
-        switch (tab){
+        switch (tab) {
             case "首页":
                 return new HomePage(this.agent);
             case "固收综合屏":

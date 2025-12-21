@@ -1,9 +1,9 @@
-import {Page} from "@playwright/test";
 import {PageAgent} from "@midscene/web";
 import {Menu} from "./components/Menu";
+import {Page} from 'playwright';
 
 export class LoginPage {
-    constructor(private page: Page, private agentForPage: (page: Page) =>PageAgent) {
+    constructor(private page: Page, private agentForPage: (page: Page) => PageAgent) {
 
     }
 
@@ -11,17 +11,7 @@ export class LoginPage {
         // 1. 导航并获取主页面agent
         await this.page.goto("https://web.innodealing.com/");
 
-
-        // 2. 强制设置视口
-        await this.page.setViewportSize({ width: 1920, height: 1200 });
-
-        // 4. 触发resize事件（关键！）
-        await this.page.evaluate(() => {
-            // 方法A：直接调用resize
-            window.dispatchEvent(new Event('resize'));
-        });
-
-        const agent = await this.agentForPage(this.page);
+        const agent = this.agentForPage(this.page);
 
         // 2. 使用agent执行登录操作
         await agent.aiInput("DM账号", {value: username, xpath: "//input[@id='inputUsername']"});
